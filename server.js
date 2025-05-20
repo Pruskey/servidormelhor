@@ -88,6 +88,25 @@ server.post('/tarefas', (req, res) => {
 })
 
 //atualizar uma tarefa
+//Professor
+/*
+server.put('/tarefas/:id', (req, res) =>{
+    const id = parseInt(req.params.id)
+    let cod_err = 200
+    let msg = 'Atualizado com sucesso'
+    fs.readFile('./banco.json', 'utf-8', (err, data) =>
+        if (err){
+    res.status(503). json({erro: err})
+    }
+    const lista_de_tarefas = JSON.parse(data)
+    const tarefa_index = lista_de_tarefas.findIndex((item) => item.id
+    if (tarefa_index == -1) {
+    } else {
+     
+    }))})
+*/
+
+//Tentando
 server.put('/tarefas/:id', (req, res) => {
     const tarefa_id = req.params.id
     const {titulo, descricao, dificuldades, user_id} = req.body
