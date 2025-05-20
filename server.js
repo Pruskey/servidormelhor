@@ -102,7 +102,7 @@ server.put('/tarefas/:id', (req, res) =>{
     const tarefa_index = lista_de_tarefas.findIndex((item) => item.id
     if (tarefa_index == -1) {
     } else {
-     
+
     }))})
 */
 
@@ -168,7 +168,38 @@ server.delete('/tarefas/:id', (req, res) => {
     })
 })
 
-//Mandar o servidor ouvir na porta 8000.
+//Função ler arquivos
+function ReadFile(file) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(file, 'utf-8', (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                try {
+                    const parsedData = JSON.parse(data);
+                    resolve(parsedData);
+                } catch (parseError) {
+                    reject(parseError);
+                }
+            }
+        });
+    });
+}
+
+
+//Função escrever arquivos
+
+WriteFile('./banco.json', lista)
+    .then(() => {
+        console.log("File written successfully!");
+    })
+    .catch((err) => {
+        console.error("Error writing to file", err);
+    });
+
+
+
+//mandar o servidor ouvir na porta 8000.
 server.listen(8000, () => {
     console.log('Servidor rodando na porta 8000')
 })
